@@ -2,9 +2,9 @@ import dataclasses
 import random
 from typing import List
 
-from game_state import GuessWord, GuessLetter, GuessState
-from possibilities import Possiblities
-from wordbank import WordBank, default_word_bank
+from wordlesolver.game_state import GuessWord, GuessLetter, GuessState
+from wordlesolver.possibilities import Possiblities
+from wordlesolver.wordbank import WordBank, default_word_bank
 
 
 @dataclasses.dataclass(frozen=True)
@@ -22,7 +22,7 @@ class Guesser:
 
     def __init__(self, rules: GameRules, first_guess: str = None):
         self.rules = rules
-        self.guesses: List[str] = []
+        self.guesses: List[GuessWord] = []
         if rules:
             self._unpack_rules()
         self.first_guess = first_guess
@@ -68,7 +68,7 @@ class Guesser:
 
     def add_guess(self, guess_str: str):
         guess = self.decode_guess(guess_str)
-        self.guesses.append(guess_str)
+        self.guesses.append(guess)
         self.possibilities.update_state(guess)
 
     def decode_guess(self, guess: str) -> GuessWord:

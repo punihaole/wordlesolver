@@ -1,6 +1,7 @@
 from typing import List
 
-from game_state import GuessWord, GuessState
+from wordlesolver.game_state import GuessWord, GuessState
+
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 

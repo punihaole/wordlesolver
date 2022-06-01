@@ -56,3 +56,9 @@ class GuessWord:
         for l in self.letters:
             r.append(repr(l))
         return ''.join(r)
+
+    def __str__(self) -> str:
+        s = []
+        for l in self.letters:
+            s.append(l.letter)
+        return ''.join(s)
