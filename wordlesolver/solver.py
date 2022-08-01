@@ -44,22 +44,33 @@ class Guesser:
     def next_guess(self) -> str:
         num_guesses = len(self.guesses)
         if num_guesses == 0:
-            return self.get_first_guess()
+            word = self.get_first_guess()
         elif num_guesses < self.max_guesses:
-            for word in self.word_bank:
-                if self.possibilities.is_possible(word):
-                    return word
-                if word.endswith('r') and 'o' in word and 'a' in word:
-                    pass
-            raise RuntimeError('No more guesses found!')
+            word = self.get_best_guess()
         else:
             raise RuntimeError('You are out of guesses!')
+        if not word:
+            raise RuntimeError('No more guesses found!')
+        return word
 
     def get_first_guess(self) -> str:
         if self.first_guess:
             return self.first_guess
         else:
             return random.choice(self.word_bank.words)
+
+    def get_best_guess(self) -> str:
+        try:
+            return self.get_all_possible_guesses()[0]
+        except IndexError:
+            return None
+
+    def get_all_possible_guesses(self) -> List[str]:
+        guesses = []
+        for word in self.word_bank:
+            if self.possibilities.is_possible(word):
+                guesses.append(word)
+        return guesses
 
     @classmethod
     def construct(cls):
