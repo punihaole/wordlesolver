@@ -56,8 +56,7 @@ class Guesser:
     def get_first_guess(self) -> str:
         if self.first_guess:
             return self.first_guess
-        else:
-            return random.choice(self.word_bank.words)
+        return random.choice(self.word_bank.words)
 
     def get_best_guess(self) -> str:
         try:
@@ -100,8 +99,8 @@ class Guesser:
     def _key_to_guess_state(self, key: str) -> GuessState:
         if key == '-':
             return GuessState.incorrect
-        elif key == '!':
+        if key == '!':
             return GuessState.wrong_position
-        elif key == '+':
+        if key == '+':
             return GuessState.correct
         raise ValueError('Invalid key')

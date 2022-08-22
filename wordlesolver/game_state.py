@@ -26,19 +26,19 @@ class GuessLetter:
         return f'{pos_0}{pos_1}'
 
     def _encode_state(self) -> str:
+        res = '?'
         if self.state == GuessState.incorrect:
-            return '-'
-        elif self.state == GuessState.wrong_position:
-            return '!'
-        elif self.state == GuessState.correct:
-            return '+'
-        else:
-            return '?'
+            res = '-'
+        if self.state == GuessState.wrong_position:
+            res = '!'
+        if self.state == GuessState.correct:
+            res = '+'
+        return res
 
 
 class GuessWord:
-    def __init__(self, letters: List[GuessLetter] = []):
-        self.letters = letters
+    def __init__(self, letters: List[GuessLetter] = None):
+        self.letters = letters or []
 
     def __len__(self) -> int:
         return len(self.letters)
@@ -46,19 +46,19 @@ class GuessWord:
     def __eq__(self, other) -> bool:
         if not isinstance(other, GuessWord):
             return False
-        for a, b in zip(self.letters, other.letters):
-            if a != b:
+        for a_letter, b_letter in zip(self.letters, other.letters):
+            if a_letter != b_letter:
                 return False
         return True
 
     def __repr__(self) -> str:
-        r = []
-        for l in self.letters:
-            r.append(repr(l))
-        return ''.join(r)
+        result = []
+        for letter in self.letters:
+            result.append(repr(letter))
+        return ''.join(result)
 
     def __str__(self) -> str:
-        s = []
-        for l in self.letters:
-            s.append(l.letter)
-        return ''.join(s)
+        result = []
+        for guess_letter in self.letters:
+            result.append(guess_letter.letter)
+        return ''.join(result)

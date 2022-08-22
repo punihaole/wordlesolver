@@ -35,7 +35,7 @@ class Possiblities:
     def __init__(self, num_letters: int):
         self.positions: List[Position] = []
         self.required_letters = set()
-        for i in range(num_letters):
+        for _ in range(num_letters):
             self.positions.append(Position())
 
     def is_possible(self, word: str) -> bool:

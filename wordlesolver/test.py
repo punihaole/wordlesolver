@@ -31,7 +31,7 @@ class TestGuesser(TestCase):
 
 class TestPossibilities(TestCase):
     def setUp(self) -> None:
-        p = Possiblities(5)
+        poss = Possiblities(5)
         guess1 = GuessWord([
             GuessLetter('c', GuessState.incorrect),
             GuessLetter('h', GuessState.incorrect),
@@ -39,7 +39,7 @@ class TestPossibilities(TestCase):
             GuessLetter('i', GuessState.incorrect),
             GuessLetter('r', GuessState.correct),
         ])
-        p.update_state(guess1)
+        poss.update_state(guess1)
         guess2 = GuessWord([
             GuessLetter('p', GuessState.incorrect),
             GuessLetter('o', GuessState.wrong_position),
@@ -47,8 +47,8 @@ class TestPossibilities(TestCase):
             GuessLetter('a', GuessState.wrong_position),
             GuessLetter('r', GuessState.correct),
         ])
-        p.update_state(guess2)
-        self.possibilities = p
+        poss.update_state(guess2)
+        self.possibilities = poss
 
     def test_major(self):
         self.assertTrue(self.possibilities.is_possible('major'))
@@ -60,13 +60,13 @@ class TestPossibilities(TestCase):
         self.assertFalse(self.possibilities.is_possible('spoon'))
 
     def test_simple_game(self):
-        p = Possiblities(5)
+        poss = Possiblities(5)
         for letter in 'abcdefghijklmnopqrstuvwxyz':
-            for position in p.positions:
+            for position in poss.positions:
                 self.assertTrue(position.is_possible(letter))
-        p.positions[0].set_not_letter('a')
-        self.assertFalse(p.positions[0].is_possible('a'))
-        for position in p.positions[1:]:
+        poss.positions[0].set_not_letter('a')
+        self.assertFalse(poss.positions[0].is_possible('a'))
+        for position in poss.positions[1:]:
             self.assertTrue(position.is_possible('a'))
 
 

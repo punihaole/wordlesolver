@@ -9,8 +9,8 @@ class WordBank:
 
     def load(self):
         self.words = []
-        with self.path.open('r') as f:
-            for word in f.readlines():
+        with self.path.open('r') as file_object:
+            for word in file_object.readlines():
                 self.words.append(word.strip())
 
     def __iter__(self):
