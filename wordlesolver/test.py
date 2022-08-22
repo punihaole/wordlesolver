@@ -20,13 +20,13 @@ class TestGuesser(TestCase):
     def test_valid_first_guess(self):
         rules = GameRules(None, 1, 5)
         guesser = Guesser(rules, 'guess')
-        self.assertTrue(guesser._validate_first_guess())
+        self.assertTrue(guesser._validate_first_guess())  # pylint: disable=W0212
 
     def test_invalid_first_guess(self):
         rules = GameRules(None, 1, 5)
         guesser = Guesser(rules)
         guesser.first_guess = 'blah'
-        self.assertFalse(guesser._validate_first_guess())
+        self.assertFalse(guesser._validate_first_guess())  # pylint: disable=W0212
 
 
 class TestPossibilities(TestCase):
