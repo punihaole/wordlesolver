@@ -1,6 +1,8 @@
 from pathlib import Path
 from typing import List
 
+from sgb_words import WORD_LIST
+
 
 class WordBank:
     def __init__(self, path: Path):
@@ -17,6 +19,5 @@ class WordBank:
         return iter(self.words)
 
 
-file = Path(__file__).parent.parent / 'data' / 'sgb-words.txt'
-default_word_bank = WordBank(file)
-default_word_bank.load()
+default_word_bank = WordBank(None)
+default_word_bank.words = WORD_LIST

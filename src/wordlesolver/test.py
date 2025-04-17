@@ -1,6 +1,7 @@
 import unittest
 from unittest import TestCase
 
+from wordlesolver import WordBank
 from wordlesolver.possibilities import Possiblities
 from wordlesolver.solver import Guesser, GameRules
 from wordlesolver.game_state import GuessLetter, GuessState, GuessWord
