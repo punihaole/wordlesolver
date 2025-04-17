@@ -3,9 +3,12 @@ name = "wordlesolver"
 version = "0.1.2"
 description = ""
 authors = ["Tom Punihaole <tom.punihaole@gmail.com>"]
+packages = [
+    { include = "wordlesolver", from = "src"},
+]
+
 include = [
-    "src/data",
-    "src/wordlesolver"
+    { path = "src/data", format = ["sdist", "wheel"] }
 ]
 
 [tool.poetry.dependencies]
