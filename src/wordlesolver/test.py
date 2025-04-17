@@ -1,9 +1,9 @@
 import unittest
 from unittest import TestCase
 
-from wordlesolver.possibilities import Possiblities
-from wordlesolver.solver import Guesser, GameRules
-from wordlesolver.game_state import GuessLetter, GuessState, GuessWord
+from src.wordlesolver.possibilities import Possiblities
+from src.wordlesolver.solver import Guesser, GameRules
+from src.wordlesolver.game_state import GuessLetter, GuessState, GuessWord
 
 
 class TestGuesser(TestCase):

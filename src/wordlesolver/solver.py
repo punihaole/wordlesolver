@@ -2,9 +2,9 @@ import dataclasses
 import random
 from typing import List
 
-from wordlesolver.game_state import GuessWord, GuessLetter, GuessState
-from wordlesolver.possibilities import Possiblities
-from wordlesolver.wordbank import WordBank, default_word_bank
+from src.wordlesolver.game_state import GuessWord, GuessLetter, GuessState
+from src.wordlesolver.possibilities import Possiblities
+from src.wordlesolver.wordbank import WordBank, default_word_bank
 
 
 @dataclasses.dataclass(frozen=True)
