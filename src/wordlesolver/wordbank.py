@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import List
 
-from sgb_words import WORD_LIST
+from wordlesolver.sgb_words import WORD_LIST
 
 
 class WordBank:
